@@ -1,63 +1,478 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Declaración Anual</title>
+    <title>Nuestra Boda - Jacky y Mizael</title>
     <style>
-        body {
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
-            color: black;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        .banner {
-            background-color: darkgreen;
-            color: white;
-            padding: 10px;
-            text-align: center;
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #2c3e50;
         }
+
+        .invitation-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+            position: relative;
+        }
+
+        /* Imágenes decorativas laterales */
+        .side-decoration {
+            position:absolute;
+            width:1000px;
+            height: 470px;
+            background-size: cover;
+            background-position: left;
+            /*border-radius: 50%;*/
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .side-decoration.left {
+            left: -10px;
+            top: 210px;
+            /* REEMPLAZA con tu imagen izquierda */
+            background-image: url('fondo.jpg');
+        }
+
+        .side-decoration.right {
+            right: -30px;
+            top: 250px;
+            /* REEMPLAZA con tu imagen derecha */
+            background-image: url('fondo.jpg');
+        }
+
+        /* Versión alternativa con formas diferentes */
+        .side-decoration.left-alt {
+            left: -25px;
+            top: 120px;
+            width: 300px;
+            height: 100px;
+            /*border-radius: 25px 25px 40px 40px;*/
+            transform: rotate(-15deg);
+        }
+
+        .side-decoration.right-alt {
+            right: -25px;
+            top: 200px;
+            width: 300px;
+            height: 100px;
+            border-radius: 25px 25px 40px 40px;
+            transform: rotate(15deg);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 30px;
             text-align: center;
-            margin-top: 20px;
-        }
-        .section-header {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: darkgreen;
-        }
-        .result {
-            font-size: 24px;
-            text-align: center;
-        }
-        .button {
-            display: block;
-            width: 200px;
-            margin: 20px auto;
-            padding: 10px;
-            text-align: center;
-            background-color: darkgreen;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* REEMPLAZA 'URL_DE_TU_IMAGEN' con el enlace de tu imagen */
+            background-image: url('Encabezado.jpg');
+            background-size:cover; /* Cubre todo el área */
+            background-position: top; /* Centra la imagen */
+            background-repeat: no-repeat; /* No repite la imagen */
+            opacity: 0.4; /* Controla qué tan transparente es (0.1 = muy sutil, 0.5 = más visible) */
+            /* Quita la animación para imagen estática */
+            /* animation: float 20s linear infinite; */
+        }
+
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-title {
+            font-size: 2.1em;
+            margin-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .names {
+            font-size: 1.8em;
+            margin: 20px 0;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            color: #667eea;
+            margin-bottom: 15px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+        }
+
+        .date-time {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #34495e;
+        }
+
+        .location {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #34495e;
+        }
+
+        .location-name {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 25px;
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .message {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            font-style: italic;
+            color: #555;
+            border-left: 4px solid #667eea;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9ff;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .heart {
+            color: #e74c3c;
+            animation: pulse 1.5s ease-in-out infinite;
+            margin: 0 5px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .rsvp-form {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px solid #667eea;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+
+        @media (max-width: 480px) {
+            .invitation-container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .main-title {
+                font-size: 1.8em;
+            }
+            
+            .names {
+                font-size: 1.5em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="banner">
-        <div>Gobierno Federal</div>
-        <div>Administración de Impuestos</div>
+    <div class="invitation-container">
+        <!-- Imágenes decorativas laterales -->
+        <div class="side-decoration left"></div>
+        <!--<div class="side-decoration right"></div>-->
+        
+        <div class="header">
+            <div class="header-content">
+                <div class="main-title">Jacky & Mizael</div>
+                <div class="names">Nuestra boda</div>
+                <div class="subtitle">Acompáñanos</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <!--<div class="section-title">📅 Sábado, 4 de Octubre</div>-->
+                <div class="section-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="#667eea" stroke-width="2" fill="none"/>
+                        <line x1="16" y1="2" x2="16" y2="6" stroke="#667eea" stroke-width="2"/>
+                        <line x1="8" y1="2" x2="8" y2="6" stroke="#667eea" stroke-width="2"/>
+                        <line x1="3" y1="10" x2="21" y2="10" stroke="#667eea" stroke-width="2"/>
+                        <text x="12" y="18" text-anchor="middle" fill="#667eea" font-size="8" font-weight="bold">04</text>
+                    </svg>
+                    Fecha y Hora</div>
+                <div class="date-time">
+                    Sábado, 4 de Octubre
+                    <strong>3:00 PM</strong><br>
+                    
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">📍 Ubicación</div>
+                <div class="location">
+                    <div class="location-name"></div>
+                    <strong>Espíritu Inquieto</strong><br>
+                    Av. Toluca #11 Santiago Teyahualco<br>
+                    Tultepec, Estado de México C.P. 54980<br>
+                    <!--<em>Restaurante con jardín</em><br><-->
+                    <a href="https://espirituinquieto.com.mx/" target="_blank" style="color: #667eea; text-decoration: none; font-weight: bold;">🌐 Sitio web</a>
+                </div>
+            </div>
+
+            <div class="message">
+                Queremos compartir este momento especial contigo. Será una ceremonia íntima y sencilla, rodeados de las personas que más queremos.
+            </div>
+
+            <div class="rsvp-form">
+                <div class="section-title">💌 Confirma tu asistencia</div>
+                <form id="rsvpForm">
+                    <div class="form-group">
+                        <label for="name">Nombre completo:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="attendance">¿Podrás acompañarnos?</label>
+                        <select id="attendance" name="attendance" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="si">Sí, ahí estaré 🎉</option>
+                            <option value="no">No podré asistir 😢</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="guestsGroup" style="display: none;">
+                        <label for="guests">Número de acompañantes:</label>
+                        <select id="guests" name="guests">
+                            <option value="0">Solo yo</option>
+                            <option value="1">+1 acompañante</option>
+                            <option value="2">+2 acompañantes</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar confirmación</button>
+                </form>
+            </div>
+
+            <div class="buttons">
+                <button class="btn btn-secondary" onclick="addToCalendar()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="#667eea" stroke-width="2" fill="none"/>
+                        <line x1="16" y1="2" x2="16" y2="6" stroke="#667eea" stroke-width="2"/>
+                        <line x1="8" y1="2" x2="8" y2="6" stroke="#667eea" stroke-width="2"/>
+                        <line x1="3" y1="10" x2="21" y2="10" stroke="#667eea" stroke-width="2"/>
+                        <text x="12" y="18" text-anchor="middle" fill="#667eea" font-size="8" font-weight="bold">04</text>
+                    </svg>
+                    Agregar al calendario
+                </button>
+                <button class="btn btn-secondary" onclick="openMap()">
+                    🗺️ Ver ubicación
+                </button>
+            </div>
+        </div>
+
+        <div class="footer">
+            Con amor <span class="heart">♥</span> Jacky & Mizael
+        </div>
     </div>
-    <div class="header">
-        <h1>Declaración Anual</h1>
-        <p>Gracias por tu declaración, Porfirio D. Martínez.</p>
-    </div>
-    <div class="section-header">Resultado de la declaración</div>
-    <div class="result">Impuesto a pagar: $3,349.70</div>
-    <a href="page2.html" class="button">Pagar en línea</a>
-    <a href="page2.html" class="button">Imprimir línea de captura</a>
+
+    <script>
+        // Mostrar campo de acompañantes solo si confirma asistencia
+        document.getElementById('attendance').addEventListener('change', function() {
+            const guestsGroup = document.getElementById('guestsGroup');
+            if (this.value === 'si') {
+                guestsGroup.style.display = 'block';
+            } else {
+                guestsGroup.style.display = 'none';
+            }
+        });
+
+        // Manejar confirmación RSVP
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const attendance = formData.get('attendance');
+            const guests = formData.get('guests') || '0';
+            
+            let message = `¡Hola! Soy ${name}.\n\n`;
+            
+            if (attendance === 'si') {
+                const totalGuests = parseInt(guests) + 1;
+                message += `✅ ¡Confirmo mi asistencia a su boda!\n`;
+                message += `👥 Asistiremos: ${totalGuests} persona${totalGuests > 1 ? 's' : ''}`;
+            } else {
+                message += `❌ Lamentablemente no podré asistir a su boda.`;
+            }
+            
+            message += `\n\n¡Muchas felicidades por su próximo matrimonio! 💕`;
+            
+            // Crear enlace de WhatsApp
+            const phoneNumber = '525532237528'; // Tu número de WhatsApp
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Mostrar mensaje de confirmación
+            alert('¡Gracias! Te redirigimos a WhatsApp para enviar tu confirmación.');
+        });
+
+        function addToCalendar() {
+            // Datos del evento
+            const eventData = {
+                title: 'Boda de Jacky & Mizael',
+                start: '2025-10-04T15:00:00',
+                end: '2025-10-04T18:00:00',
+                description: 'Ceremonia de boda civil en Espíritu Inquieto',
+                location: 'Espíritu Inquieto, Av. Toluca #11 Santiago Teyahualco, Tultepec, Estado de México'
+            };
+            
+            // Crear enlace para Google Calendar
+            const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventData.title)}&dates=${eventData.start.replace(/[-:]/g, '')}/${eventData.end.replace(/[-:]/g, '')}&details=${encodeURIComponent(eventData.description)}&location=${encodeURIComponent(eventData.location)}`;
+            
+            window.open(googleUrl, '_blank');
+        }
+
+        function openMap() {
+            // Coordenadas del lugar
+            const address = 'Espíritu Inquieto, Av. Toluca #11 Santiago Teyahualco, Tultepec, Estado de México C.P. 54980';
+            const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+            window.open(mapsUrl, '_blank');
+        }
+
+        // Animación de entrada suave
+        window.addEventListener('load', function() {
+            document.querySelector('.invitation-container').style.opacity = '1';
+        });
+    </script>
 </body>
 </html>
