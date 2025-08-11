@@ -30,49 +30,26 @@
             position: relative;
         }
 
-        /* Imágenes decorativas laterales */
-        .side-decoration {
-            position:absolute;
-            width:1000px;
-            height: 470px;
-            background-size: cover;
-            background-position: left;
-            /*border-radius: 50%;*/
-            opacity: 0.1;
+/* Imagen de fondo para toda la invitación */
+        .invitation-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('fondo.png');
+            background-size: contain;
+            background-position: top;
+            background-repeat:repeat-y;
+            opacity: 1; /* Efecto marca de agua sutil */
             z-index: 1;
         }
 
-        .side-decoration.left {
-            left: -10px;
-            top: 210px;
-            /* REEMPLAZA con tu imagen izquierda */
-            background-image: url('fondo.jpg');
-        }
-
-        .side-decoration.right {
-            right: -30px;
-            top: 250px;
-            /* REEMPLAZA con tu imagen derecha */
-            background-image: url('fondo.jpg');
-        }
-
-        /* Versión alternativa con formas diferentes */
-        .side-decoration.left-alt {
-            left: -25px;
-            top: 120px;
-            width: 300px;
-            height: 100px;
-            /*border-radius: 25px 25px 40px 40px;*/
-            transform: rotate(-15deg);
-        }
-
-        .side-decoration.right-alt {
-            right: -25px;
-            top: 200px;
-            width: 300px;
-            height: 100px;
-            border-radius: 25px 25px 40px 40px;
-            transform: rotate(15deg);
+        /* Asegurar que el contenido esté por encima de la imagen de fondo */
+        .header, .content, .footer {
+            position: relative;
+            z-index: 2;
         }
 
         @keyframes fadeIn {
@@ -81,30 +58,31 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 40px 30px;
+            /*background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
+            padding-top: 150px;
             text-align: center;
-            color: white;
+            color: rgb(11, 0, 0);
             position: relative;
             overflow: hidden;
         }
-
+/*
         .header::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 400px;
             height: 100%;
             /* REEMPLAZA 'URL_DE_TU_IMAGEN' con el enlace de tu imagen */
-            background-image: url('Encabezado.jpg');
+            /*background-image: url('fondo.png');
             background-size:cover; /* Cubre todo el área */
-            background-position: top; /* Centra la imagen */
-            background-repeat: no-repeat; /* No repite la imagen */
-            opacity: 0.4; /* Controla qué tan transparente es (0.1 = muy sutil, 0.5 = más visible) */
+            /*background-position: center; /* Centra la imagen */
+            /*background-repeat: no-repeat; /* No repite la imagen */
+            /*opacity: 1; /* Controla qué tan transparente es (0.1 = muy sutil, 0.5 = más visible) */
             /* Quita la animación para imagen estática */
             /* animation: float 20s linear infinite; */
-        }
+        /*}
+        */
 
         @keyframes float {
             0% { transform: translate(-50%, -50%) rotate(0deg); }
@@ -117,10 +95,11 @@
         }
 
         .main-title {
-            font-size: 2.1em;
+            font-size: 2em;
             margin-bottom: 10px;
             font-weight: bold;
             letter-spacing: 2px;
+            font-style: italic;
         }
 
         .names {
@@ -137,11 +116,11 @@
         }
 
         .content {
-            padding: 40px 30px;
+            padding: 20px 30px;
         }
 
         .section {
-            margin-bottom: 30px;
+            margin-bottom: 0px;
             text-align: center;
         }
 
@@ -159,34 +138,36 @@
             bottom: -5px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 40px;
             height: 2px;
-            background: linear-gradient(to right, #667eea, #764ba2);
+            /*background: linear-gradient(to right, #667eea, #764ba2);*/
         }
 
         .date-time {
             font-size: 1.1em;
             line-height: 1.6;
-            color: #34495e;
+            color: #00050a;
         }
 
         .location {
             font-size: 1.1em;
             line-height: 1.6;
-            color: #34495e;
+            color: #000509;
+            margin-top: 0px;
+            margin-bottom: 10px;
         }
 
         .location-name {
             font-weight: bold;
-            color: #667eea;
-            margin-bottom: 8px;
+            color: #000208;
+            margin-bottom: 2px;
         }
 
         .buttons {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin-top: 30px;
+            margin-top: 50px;
         }
 
         .btn {
@@ -216,8 +197,8 @@
         }
 
         .btn-secondary {
-            background: transparent;
-            color: #667eea;
+            background: rgba(255, 255, 255, 0.9);
+            color:#667eea;
             border: 2px solid #667eea;
         }
 
@@ -228,10 +209,10 @@
         }
 
         .message {
-            background: #f8f9ff;
-            padding: 25px;
+            background: rgba(248, 249, 255, 0.9);
+            padding: 5px;
             border-radius: 15px;
-            margin: 25px 0;
+            margin-bottom: 5px;
             font-style: italic;
             color: #555;
             border-left: 4px solid #667eea;
@@ -258,9 +239,9 @@
 
         .rsvp-form {
             background: #f8f9ff;
-            padding: 20px;
+            padding: 5px;
             border-radius: 15px;
-            margin: 20px 0;
+            margin: 0 0;
             border: 2px solid #667eea;
         }
 
@@ -310,41 +291,39 @@
 </head>
 <body>
     <div class="invitation-container">
-        <!-- Imágenes decorativas laterales -->
-        <div class="side-decoration left"></div>
-        <!--<div class="side-decoration right"></div>-->
-        
         <div class="header">
             <div class="header-content">
                 <div class="main-title">Jacky & Mizael</div>
                 <div class="names">Nuestra boda</div>
                 <div class="subtitle">Acompáñanos</div>
+                <div class="date-time">
+                    Sábado, 4 de Octubre
+                    <strong>3:00 PM</strong><br>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="section">
+                <div class="message">
+                Queremos compartir este momento especial contigo. Será una ceremonia íntima y sencilla, rodeados de las personas que más queremos.
+                <br>
+            </div>
+            <div class="section">    
+                <div class="video-section">
+                    <video controls width="100%" style="border-radius: 15px; max-height: 400px; object-fit: contain; background-color: #ddd;">
+                        <source src="video.mp4" type="video/mp4">
+                        <source src="video.webm" type="video/webm">
+                        Tu navegador no soporta videos HTML5.
+                    </video>
+                </div>
+            </div>
             </div>
         </div>
 
         <div class="content">
             <div class="section">
-                <!--<div class="section-title">📅 Sábado, 4 de Octubre</div>-->
-                <div class="section-title">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="#667eea" stroke-width="2" fill="none"/>
-                        <line x1="16" y1="2" x2="16" y2="6" stroke="#667eea" stroke-width="2"/>
-                        <line x1="8" y1="2" x2="8" y2="6" stroke="#667eea" stroke-width="2"/>
-                        <line x1="3" y1="10" x2="21" y2="10" stroke="#667eea" stroke-width="2"/>
-                        <text x="12" y="18" text-anchor="middle" fill="#667eea" font-size="8" font-weight="bold">04</text>
-                    </svg>
-                    Fecha y Hora</div>
-                <div class="date-time">
-                    Sábado, 4 de Octubre
-                    <strong>3:00 PM</strong><br>
-                    
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">📍 Ubicación</div>
                 <div class="location">
-                    <div class="location-name"></div>
+                    <div class="location-name">📍Lugar</div>
                     <strong>Espíritu Inquieto</strong><br>
                     Av. Toluca #11 Santiago Teyahualco<br>
                     Tultepec, Estado de México C.P. 54980<br>
@@ -353,9 +332,7 @@
                 </div>
             </div>
 
-            <div class="message">
-                Queremos compartir este momento especial contigo. Será una ceremonia íntima y sencilla, rodeados de las personas que más queremos.
-            </div>
+            
 
             <div class="rsvp-form">
                 <div class="section-title">💌 Confirma tu asistencia</div>
