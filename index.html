@@ -31,7 +31,7 @@
         }
 
 /* Imagen de fondo para toda la invitación */
-        .invitation-container::before {
+  /*      .invitation-container::before {
             content: '';
             position: absolute;
             top: 0;
@@ -42,15 +42,15 @@
             background-size: contain;
             background-position: top;
             background-repeat:repeat-y;
-            opacity: 1; /* Efecto marca de agua sutil */
+            opacity: 1; 
             z-index: 1;
-        }
+        }*/
 
         /* Asegurar que el contenido esté por encima de la imagen de fondo */
-        .header, .content, .footer {
+     /*   .header, .content, .footer {
             position: relative;
             z-index: 2;
-        }
+        }*/
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
@@ -59,11 +59,20 @@
 
         .header {
             /*background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
-            padding-top: 150px;
+            padding-top: 110px;
+            padding-bottom: 61px;
             text-align: center;
             color: rgb(11, 0, 0);
             position: relative;
             overflow: hidden;
+            width: 100%;
+            height: 100%;
+            background-image: url('fondo.png');
+            background-size: contain;
+            background-position: top;
+            background-repeat:no-repeat;
+            opacity: 1; /* Efecto marca de agua sutil */
+            z-index: 1;
         }
 /*
         .header::before {
@@ -95,37 +104,46 @@
         }
 
         .main-title {
-            font-size: 2em;
-            margin-bottom: 10px;
+            font-size: 3em;
+            padding: 10px 10px;
             font-weight: bold;
             letter-spacing: 2px;
-            font-style: italic;
+            font-family: 'Brush Script MT', cursive;
         }
 
         .names {
-            font-size: 1.8em;
-            margin: 20px 0;
+            font-size: 1.6em;
+            padding: 10px 20px;
             font-weight: bold;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .subtitle {
-            font-size: 1em;
+            font-size: 1.2em;
             opacity: 0.9;
             font-style: italic;
+            padding: 10px;
         }
 
         .content {
-            padding: 20px 30px;
+            padding: 5px 0px;
+            width: 100%;
+            height: 100%;
+            background-image: url('Contenido.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat:no-repeat;
+            opacity: 1; /* Efecto marca de agua sutil */
+            z-index: 1;
         }
 
         .section {
-            margin-bottom: 0px;
+            margin-bottom: 20px;
             text-align: center;
         }
 
         .section-title {
-            font-size: 1.3em;
+            font-size: 1.5em;
             color: #667eea;
             margin-bottom: 15px;
             font-weight: bold;
@@ -135,7 +153,7 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 5px;
             left: 50%;
             transform: translateX(-50%);
             width: 40px;
@@ -147,13 +165,14 @@
             font-size: 1.1em;
             line-height: 1.6;
             color: #00050a;
+            padding: 20px;
         }
 
         .location {
             font-size: 1.1em;
             line-height: 1.6;
             color: #000509;
-            margin-top: 0px;
+            margin-top: 20px;
             margin-bottom: 10px;
         }
 
@@ -168,6 +187,12 @@
             flex-direction: column;
             gap: 15px;
             margin-top: 50px;
+            background-image: url('Pie.png');
+            background-size: cover;
+            background-position: bottom;
+            background-repeat:no-repeat;
+            opacity: 1; /* Efecto marca de agua sutil */
+            z-index: 1;
         }
 
         .btn {
@@ -210,8 +235,9 @@
 
         .message {
             background: rgba(248, 249, 255, 0.9);
-            padding: 5px;
+            padding: 20px;
             border-radius: 15px;
+            margin-top: 10px;
             margin-bottom: 5px;
             font-style: italic;
             color: #555;
@@ -224,6 +250,8 @@
             background: #f8f9ff;
             color: #666;
             font-size: 0.9em;
+            width: 100%;
+            height: 100%;
         }
 
         .heart {
@@ -272,19 +300,27 @@
             }
             
             .header {
-                padding: 30px 20px;
+                padding-top: 110px;
+                padding-bottom: 61px;
             }
             
             .main-title {
-                font-size: 1.8em;
+                font-size: 3em;
+                padding: 10px 10px;
+                font-weight: bold;
+                letter-spacing: 2px;
+                font-family: 'Brush Script MT', cursive;
             }
             
             .names {
-                font-size: 1.5em;
+                font-size: 1.6em;
+                padding: 10px 20px;
+                font-weight: bold;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             }
             
             .content {
-                padding: 30px 20px;
+                padding: 5px 0px;
             }
         }
     </style>
@@ -297,29 +333,18 @@
                 <div class="names">Nuestra boda</div>
                 <div class="subtitle">Acompáñanos</div>
                 <div class="date-time">
-                    Sábado, 4 de Octubre
+                    Sábado, 4 de Octubre<br>
                     <strong>3:00 PM</strong><br>
                 </div>
             </div>
-        </div>
-        <div class="content">
             <div class="section">
                 <div class="message">
-                Queremos compartir este momento especial contigo. Será una ceremonia íntima y sencilla, rodeados de las personas que más queremos.
-                <br>
-            </div>
-            <div class="section">    
-                <div class="video-section">
-                    <video controls width="100%" style="border-radius: 15px; max-height: 400px; object-fit: contain; background-color: #ddd;">
-                        <source src="video.mp4" type="video/mp4">
-                        <source src="video.webm" type="video/webm">
-                        Tu navegador no soporta videos HTML5.
-                    </video>
+                    Queremos compartir este momento especial contigo. Será una ceremonia íntima y sencilla, rodeados de las personas que más queremos.
+                    <br>
                 </div>
             </div>
-            </div>
+            
         </div>
-
         <div class="content">
             <div class="section">
                 <div class="location">
@@ -331,6 +356,19 @@
                     <a href="https://espirituinquieto.com.mx/" target="_blank" style="color: #667eea; text-decoration: none; font-weight: bold;">🌐 Sitio web</a>
                 </div>
             </div>
+            <div class="section">    
+                <div class="video-section">
+                    <video autoplay playsinline webkit-playsinline="true" controls width="100%" style="border-radius: 15px; max-height: 600px; object-fit:contain; background-color: #f6f5f5f7;">
+                        <source src="video.mp4" type="video/mp4">
+                        <source src="video.webm" type="video/webm">
+                        Tu navegador no soporta videos HTML5.
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            
 
             
 
